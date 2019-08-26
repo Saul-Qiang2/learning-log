@@ -143,7 +143,7 @@ if os.getcwd() == "/app":
 	# 让 request.is_secure() 承认 X_FORWARDED_PROTO 头
 	SECURE_PROXY_SSL_HEADR = ('HTTP_X_FORWARDED_PROTO', 'https')
 	# 支持所有主机头 （host header）
-	ALLOWED_HOSTS = ['xu-1.herokuapp.com/topics/']
+	ALLOWED_HOSTS = ['xu-1.herokuapp.com']
 	DEBUG = False
 	
 	# 静态资产配置
