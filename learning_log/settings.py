@@ -134,8 +134,7 @@ BOOTSTRAP3 = {
 	}
 	
 # heroku 部署
-cwd = os.getcwd()
-if cwd == "/app" or cwd[:4] == "/tmp":
+if os.getcwd() == "/app":
 	import dj_database_url
 	DATABASES = {
 		"default": dj_database_url.config(default="postgres://localhost")
@@ -144,7 +143,8 @@ if cwd == "/app" or cwd[:4] == "/tmp":
 	# 让 request.is_secure() 承认 X_FORWARDED_PROTO 头
 	SECURE_PROXY_SSL_HEADR = ('HTTP_X_FORWARDED_PROTO', 'https')
 	# 支持所有主机头 （host header）
-	ALLOWED_HOSTS = ['*']
+	ALLOWED_HOSTS = ['xu-1.herokuapp.com']
+	DEBUG = False
 	
 	# 静态资产配置
 	BASE_DIR = os.path.dirname(os.path.abspath(__file__))
