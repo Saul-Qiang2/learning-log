@@ -50,7 +50,7 @@ def new_topic(request):
 @login_required		
 def new_entry(request, topic_id):
 	'''在特定的主题中添加新条目'''
-	topic = Topic.objects.get(id=topic_id)
+	topic = get_object_or_404(Topic, id=topic_id)
 	
 	if request.method != 'POST':
 		# 从未提交数据，创建一个空表单
@@ -70,7 +70,7 @@ def new_entry(request, topic_id):
 @login_required		
 def edit_entry(request, entry_id):
 	'''编辑现有条目'''
-	entry = Entry.objects.get(id=entry_id)
+	entry = get_object_or_404(Entry, id=entry_id)
 	topic = entry.topic
 	if topic.owner != request.user:
 		raise Http404	
